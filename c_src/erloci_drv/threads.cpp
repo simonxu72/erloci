@@ -21,6 +21,9 @@
 bool threads::run_threads = true;
 transcoder & threads::tc = transcoder::instance();
 
+#ifdef __APPLE__
+#define pthread_yield sched_yield
+#endif
 
 #ifdef __WIN32__
 	PTP_POOL threads::pool							= NULL;

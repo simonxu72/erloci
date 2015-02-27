@@ -83,7 +83,7 @@ db_negative_test_() ->
 
 setup() ->
     application:start(erloci),
-    OciPort = erloci:new([{logging, true}, {env, [{"NLS_LANG", "GERMAN_SWITZERLAND.AL32UTF8"}]}]),
+    OciPort = erloci:new([{logging, true}, {env, [{"NLS_LANG", "SIMPLIFIED CHINESE_CHINA.AL32UTF8"}]}]),
     OciPort.
 
 teardown(OciPort) ->
@@ -167,7 +167,7 @@ db_test_() ->
 
 setup_conn() ->
     application:start(erloci),
-    OciPort = erloci:new([{logging, true}, {env, [{"NLS_LANG", "GERMAN_SWITZERLAND.AL32UTF8"}]}]),
+    OciPort = erloci:new([{logging, true}, {env, [{"NLS_LANG", "SIMPLIFIED CHINESE_CHINA.AL32UTF8"}]}]),
     {Tns,User,Pswd} = ?CONN_CONF,
     OciSession = OciPort:get_session(Tns, User, Pswd),
     {OciPort, OciSession}.

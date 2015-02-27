@@ -22,9 +22,15 @@ ERLOCI_HDRS = $(wildcard $(addprefix $(ERLOCI_PATH)/, *.h))
 ERLOCI_SRCS = $(wildcard $(addprefix $(ERLOCI_PATH)/, *.cpp))
 ERLOCI_OBJS = $(ERLOCI_SRCS:.cpp=.o)
 
-CXXFLAGS = -ggdb -Wall -I$(ERL_INTERFACE_DIR)/include  -I$(ERLOCI_PATH) -I$(ERLOCI_LIB_PATH) -I$(OCI_INCLUDE_PATH)
-LINKDIRS = -L$(ERL_INTERFACE_DIR)/lib -L$(PRIV_DIR) -L$(OCI_LIB_PATH)
-LINKFLAGS = -levent -lpthread -lerl_interface -lei -lerloci -locci -lons -lclntshcore -lclntsh -lnnz12 -lipc1 -lmql1
+### event
+EVENT_INCLUDE_PATH=/opt/local/include/
+EVENT_LIB_PATH=/opt/local/lib/
+###
+
+CXXFLAGS = -ggdb -Wall -I$(ERL_INTERFACE_DIR)/include  -I$(ERLOCI_PATH) -I$(ERLOCI_LIB_PATH) -I$(OCI_INCLUDE_PATH) -I$(EVENT_INCLUDE_PATH)
+LINKDIRS = -L$(ERL_INTERFACE_DIR)/lib -L$(PRIV_DIR) -L$(OCI_LIB_PATH) -L$(EVENT_LIB_PATH)
+LINKFLAGS = -levent -lpthread -lerl_interface -lei -lerloci -locci -lclntsh
+#-lons -lclntshcore -lclntsh -lnnz12 -lipc1 -lmql1
 
 all: $(PRIV_DIR)/$(EXE_TARGET)
 	@echo "erloci compiled!!!"
